@@ -1,4 +1,9 @@
 const express = require("express");
+const app = express();
+
+const dataBase = require("./db");
+
+dataBase();
 
 app.get("/", (req, res) => {
   res.send("Sportify Backend");

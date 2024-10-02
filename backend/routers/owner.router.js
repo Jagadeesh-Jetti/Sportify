@@ -1,17 +1,16 @@
 const express = require("express");
 const OwnerRouter = express.Router();
+const {
+  createOwner,
+  loginOwner,
+  getOwnerProfile,
+  updateOwnerProfile,
+  deleteOwnerProfile,
+} = require("../controllers/owner.controller");
 
-OwnerRouter.get("/signup", function (req, res) {
-  res.json({
-    message: "Owner signup route",
-  });
-});
+OwnerRouter.get("/signup", createOwner);
 
-OwnerRouter.post("/login", function (Req, res) {
-  res.json({
-    message: "Owner logged in",
-  });
-});
+OwnerRouter.post("/login", loginOwner);
 
 OwnerRouter.get("/owner/all", function (req, res) {
   res.json({
@@ -19,16 +18,10 @@ OwnerRouter.get("/owner/all", function (req, res) {
   });
 });
 
-OwnerRouter.get("/profile", function (req, res) {
-  res.json({
-    message: "Owner profile route",
-  });
-});
+OwnerRouter.get("/profile", getOwnerProfile);
 
-OwnerRouter.post("/profile", function (req, res) {
-  res.json({
-    message: "Update Owner profile",
-  });
-});
+OwnerRouter.post("/profile", updateOwnerProfile);
+
+OwnerRouter.delete("/profile", deleteOwnerProfile);
 
 module.exports = OwnerRouter;

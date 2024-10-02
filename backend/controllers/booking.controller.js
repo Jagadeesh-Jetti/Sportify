@@ -63,4 +63,10 @@ const getBookingsByPlayer = async (req, res) => {
   }
 };
 
-module.exports = { createBooking, getBooking, updateBooking, deleteBooking };
+module.exports = {
+  createBooking,
+  getBooking,
+  updateBooking,
+  deleteBooking,
+  getBookingsByPlayer,
+};

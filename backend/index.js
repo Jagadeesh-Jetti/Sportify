@@ -11,7 +11,7 @@ app.use(express.json());
 
 dataBase();
 
-app.use("/bookings", BookingRouter);
+app.use("/booking", BookingRouter);
 app.use("/owner", OwnerRouter);
 app.use("/player", PlayerRouter);
 app.use("/venue", VenueRouter);

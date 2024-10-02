@@ -1,42 +1,24 @@
 const express = require("express");
 const PlayerRouter = express.Router();
+const {
+  createPlayer,
+  loginPlayer,
+  getAllPlayers,
+  getPlayerProfile,
+  updatePlayerProfile,
+  deletePlayerProfile,
+} = require("../controllers/player.controller");
 
-PlayerRouter.get("/signup", function (req, res) {
-  res.json({
-    message: "sign up route",
-  });
-});
+PlayerRouter.get("/signup", createPlayer);
 
-PlayerRouter.post("/login", function (req, res) {
-  res.json({
-    message: "Login route",
-  });
-});
+PlayerRouter.post("/login", loginPlayer);
 
-PlayerRouter.get("/player/all", function (req, res) {
-  res.json({
-    message: "Players list route",
-  });
-});
+PlayerRouter.get("/player/all", getAllPlayers);
 
-PlayerRouter.get("/profile", function (req, res) {
-  res.json({
-    message: "Get Player profile route",
-  });
-});
+PlayerRouter.get("/profile", getPlayerProfile);
 
-PlayerRouter.post("/profile", function (req, res) {
-  res.json({
-    message: "Update player profile",
-  });
-});
+PlayerRouter.post("/profile", updatePlayerProfile);
 
-PlayerRouter.delete("/profile", function (req, res) {
-  res.json({
-    message: "Delete player profile",
-  });
-});
-
-PlayerRouter.post("/");
+PlayerRouter.delete("/profile", deletePlayerProfile);
 
 module.exports = PlayerRouter;

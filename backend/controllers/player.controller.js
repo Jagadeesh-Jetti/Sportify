@@ -16,9 +16,14 @@ const loginPlayer = async (req, res) => {
 
     const player = await Player.findOne({ email });
 
-    if (player && player.comparePassword(password)) {
-      return res.status(401).json({ message: "Invalid Password" });
+    if (!player) {
+      return res.status(404).json({ message: "Player not found" });
     }
+
+    if (player.password !== password) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+
     res.status(200).json({ message: "Login successful", player });
   } catch (error) {
     res.status(400).json({ error: error.message });

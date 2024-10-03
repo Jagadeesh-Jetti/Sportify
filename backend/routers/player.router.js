@@ -13,7 +13,7 @@ PlayerRouter.get("/signup", createPlayer);
 
 PlayerRouter.post("/login", loginPlayer);
 
-PlayerRouter.get("/player/all", getAllPlayers);
+PlayerRouter.get("/all", getAllPlayers);
 
 PlayerRouter.get("/profile", getPlayerProfile);
 

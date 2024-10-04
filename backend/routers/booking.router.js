@@ -7,9 +7,9 @@ const {
   deleteBooking,
 } = require("../controllers/booking.controller");
 
-BookingRouter.get("/:id", getBooking);
-
 BookingRouter.post("/", createBooking);
+
+BookingRouter.get("/:id", getBooking);
 
 BookingRouter.put("/:id", updateBooking);
 

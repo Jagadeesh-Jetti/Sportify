@@ -13,12 +13,8 @@ PlayerRouter.get("/signup", createPlayer);
 
 PlayerRouter.post("/login", loginPlayer);
 
-PlayerRouter.get("/all", getAllPlayers);
-
 PlayerRouter.get("/profile", getPlayerProfile);
 
 PlayerRouter.post("/profile", updatePlayerProfile);
-
-PlayerRouter.delete("/profile", deletePlayerProfile);
 
 module.exports = PlayerRouter;

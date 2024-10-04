@@ -2,8 +2,8 @@ const Venue = require("../models/venue.model");
 
 const createVenue = async (req, res) => {
   try {
-    const venue = await new Venue(req.body);
-
+    const venue = new Venue(req.body);
+    await venue.save();
     res.status(201).json({ message: "Venue created successfully", venue });
   } catch (error) {
     res.status(400).json({ message: error.message });

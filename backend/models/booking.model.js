@@ -12,15 +12,17 @@ const bookingSchema = new mongoose.Schema(
       ref: "Venue",
       required: true,
     },
-    date: {
-      type: Date,
-      required: true,
-    },
-    time: {
+    timeSlot: { type: String, required: true },
+    status: {
       type: String,
-      required: true,
+      enum: ["pending", "confirmed", "cancelled"],
+      default: "pending",
     },
-    duration: { type: Number, required: true },
+    paymentStatus: {
+      type: String,
+      enum: ["unpaid", "paid"],
+      default: "unpaid",
+    },
   },
   { timestamps: true }
 );

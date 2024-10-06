@@ -33,7 +33,7 @@ const updateVenue = async (req, res) => {
       return res.status(404).json({ message: "Venue not found" });
     }
 
-    res.status(200).json({ message: "Venue updated successfully" });
+    res.status(200).json({ message: "Venue updated successfully", venue });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

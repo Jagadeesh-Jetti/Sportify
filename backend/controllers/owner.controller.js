@@ -1,10 +1,18 @@
 const Owner = require("../models/owner.model");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config({
+  path: ".env",
+});
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const createOwner = async (req, res) => {
   try {
     const owner = new Owner(req.body);
     await owner.save();
-    res.status(201).json({ message: "Owner registered successfully" });
+    res.status(201).json({ message: "Owner registered successfully", owner });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -13,16 +21,19 @@ const createOwner = async (req, res) => {
 const loginOwner = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const owner = await Owner.findOne({ email });
 
-    if (owner && owner.comparePassword(password)) {
-      return res
-        .status(404)
-        .json({ message: "Owner not found, please signup" });
+    if (!owner) {
+      return res.status(404).json({ message: "Owner not found" });
     }
 
-    res.status(200).json({ message: "Player login successful", owner });
+    const isMatch = await owner.comparePassword(password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+
+    const token = jwt.sign({ email: owner.email }, JWT_SECRET);
+    res.status(200).json({ message: "Player login successful", owner, token });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -30,10 +41,15 @@ const loginOwner = async (req, res) => {
 
 const getOwnerProfile = async (req, res) => {
   try {
-    const owner = Owner.findById(req.params.id);
+    const owner = await Owner.findById(req.params.id);
+
+    if (!owner) {
+      res.status(404).json({ message: "Owner profile not found" });
+    }
 
     res.status(200).json({
       message: "Owner profile fetched successful",
+      owner,
     });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -49,21 +65,9 @@ const updateOwnerProfile = async (req, res) => {
     if (!owner) {
       return res.status(404).json({ message: "Owner not found to update" });
     }
-    res.status(200).json({ message: "Owner is updated", owner });
+    res.status(200).json({ message: "Owner is updated successfully", owner });
   } catch (error) {
     res.status(400).json({ message: error.message });
-  }
-};
-
-const deleteOwnerProfile = async (req, res) => {
-  try {
-    const owner = await Owner.findByIdAndDelete(req.parms.id);
-    if (!owner) {
-      res.status(404).json({ message: "Owner is not found " });
-    }
-    res.status(200).json({ message: "Owner is deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
   }
 };
 
@@ -72,5 +76,4 @@ module.exports = {
   loginOwner,
   getOwnerProfile,
   updateOwnerProfile,
-  deleteOwnerProfile,
 };

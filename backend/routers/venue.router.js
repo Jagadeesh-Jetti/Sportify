@@ -7,13 +7,14 @@ const {
   updateVenue,
   deleteVenue,
 } = require("../controllers/venue.controller");
+const { authMiddleware } = require("../middlewares/auth.middleware");
 
-VenueRouter.get("/:id", createVenue);
+VenueRouter.get("/:id", authMiddleware, createVenue);
 
-VenueRouter.post("/", getVenueById);
+VenueRouter.post("/", authMiddleware, getVenueById);
 
-VenueRouter.put("/:id", updateVenue);
+VenueRouter.put("/:id", authMiddleware, updateVenue);
 
-VenueRouter.delete("/:id", deleteVenue);
+VenueRouter.delete("/:id", authMiddleware, deleteVenue);
 
 module.exports = VenueRouter;

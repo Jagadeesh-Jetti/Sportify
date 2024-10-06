@@ -5,15 +5,15 @@ const {
   loginOwner,
   getOwnerProfile,
   updateOwnerProfile,
-  deleteOwnerProfile,
 } = require("../controllers/owner.controller");
+const { authMiddleware } = require("../middlewares/auth.middleware");
 
-OwnerRouter.get("/signup", createOwner);
+OwnerRouter.post("/signup", createOwner);
 
 OwnerRouter.post("/login", loginOwner);
 
-OwnerRouter.get("/profile", getOwnerProfile);
+OwnerRouter.get("/profile/:id", authMiddleware, getOwnerProfile);
 
-OwnerRouter.post("/profile", updateOwnerProfile);
+OwnerRouter.put("/profile/:id", authMiddleware, updateOwnerProfile);
 
 module.exports = OwnerRouter;

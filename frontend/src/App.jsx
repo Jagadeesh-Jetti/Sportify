@@ -4,13 +4,11 @@ import { Signup } from "./components/modals-components/signup";
 
 function App() {
   return (
-    <>
+    <div className="bg-white">
       <Navbar />
-      <div className="text-3xl text-red-500 p-5 text-center">
-        Sportify Landing Page
-      </div>
+
       <Signup />
-    </>
+    </div>
   );
 }
 

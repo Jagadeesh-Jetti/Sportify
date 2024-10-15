@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,35 +10,35 @@ export const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             {/* Logo */}
-            <a href="#" className="text-3xl font-bold text-indigo-600">
+            <Link to="/" className="text-3xl font-bold text-indigo-600">
               Sportify
-            </a>
+            </Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/signup"
               className="text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
-              Features
-            </a>
-            <a
-              href="#"
+              Signup
+            </Link>
+            <Link
+              to="/login"
               className="text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
-              Pricing
-            </a>
-            <a
-              href="#"
+              Login
+            </Link>
+            <Link
+              to="/contact"
               className="text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
               Contact
-            </a>
+            </Link>
           </div>
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center">
@@ -70,30 +71,30 @@ export const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="block text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/signup"
               className="block text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
-              Features
-            </a>
-            <a
-              href="#"
+              Signup
+            </Link>
+            <Link
+              to="/login"
               className="block text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
-              Pricing
-            </a>
-            <a
-              href="#"
+              Login
+            </Link>
+            <Link
+              to="/contact"
               className="block text-gray-700 text-lg hover:text-indigo-600 transition duration-300"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -3,7 +3,7 @@ export const Login = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
         <h1 className="font-bold text-center text-3xl mb-5 text-indigo-600">
-          Sportify
+          {/* Sportify */}
         </h1>
         <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
           <div className="px-5 py-7">

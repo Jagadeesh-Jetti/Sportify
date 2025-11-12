@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 export const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-between  p-5 ">
       <div className="font-bold text-3xl"> Spotify </div>
@@ -74,7 +77,10 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <div className="text-2xl"> Login/Signup </div>
+      <div className="text-2xl" onClick={() => navigate('/login')}>
+        {' '}
+        Login/Signup{' '}
+      </div>
     </div>
   );
 };

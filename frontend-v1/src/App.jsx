@@ -2,6 +2,7 @@ import './App.css';
 import Footer from './components/footer';
 import { Navbar } from './components/navbar';
 import { Login } from './pages/loginpage';
+import { Signup } from './pages/signuppage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
